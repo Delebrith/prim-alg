@@ -177,9 +177,17 @@ $(SolutionDir)..\lib\swig\swigwin-4.0.1\swig.exe -c++ -python -v -I$(SolutionDir
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cpp_prim_wrap.cxx" />
+    <ClCompile Include="graph\edge.cpp" />
+    <ClCompile Include="graph\edgeHash.cpp" />
+    <ClCompile Include="graph\edgeWeightComparator.cpp" />
+    <ClCompile Include="graph\graph.cpp" />
     <ClCompile Include="prim.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="graph\edge.h" />
+    <ClInclude Include="graph\edgeHash.h" />
+    <ClInclude Include="graph\edgeWeightComparator.h" />
+    <ClInclude Include="graph\graph.h" />
     <ClInclude Include="prim.h" />
   </ItemGroup>
   <ItemGroup>

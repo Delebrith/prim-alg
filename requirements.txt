@@ -1,2 +1,6 @@
 requests
 numpy
+pytest
+networkx
+matplotlib
+scipy
