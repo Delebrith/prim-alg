@@ -17,9 +17,7 @@
   <ItemGroup>
     <None Include="..\cpp_prim.i" />
     <None Include="..\cpython.props" />
-    <None Include="..\x64\Release\cpp_prim.py">
-      <Filter>Pliki zasobów</Filter>
-    </None>
+    <None Include="cpp_prim.py" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="prim.cpp">
@@ -28,10 +26,34 @@
     <ClCompile Include="cpp_prim_wrap.cxx">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="graph\edge.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="graph\graph.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="graph\edgeHash.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="graph\edgeWeightComparator.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="graph\edge.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="graph\graph.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
     <ClInclude Include="prim.h">
-      <Filter>Pliki źródłowe</Filter>
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="graph\edgeHash.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="graph\edgeWeightComparator.h">
+      <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
