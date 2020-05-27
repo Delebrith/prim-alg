@@ -1,6 +1,6 @@
 #include "graph.h"
 
-Graph::Graph(std::vector<std::vector<int>> adjacencyMatrix)
+Graph::Graph(std::vector<std::vector<int>>& adjacencyMatrix)
 {
 	this->adjacencyMatrix = adjacencyMatrix;
 	this->vertices = std::unordered_set<int>();

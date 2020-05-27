@@ -11,6 +11,6 @@ class Graph {
 public:
 	std::unordered_set<int> vertices;
 
-	Graph(std::vector<std::vector<int>> adjacencyMatrix);
+	Graph(std::vector<std::vector<int>>& adjacencyMatrix);
 	std::unordered_set<Edge, EdgeHash> getAdjacentEdgesOf(int vertex);
 };
