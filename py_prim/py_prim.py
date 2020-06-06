@@ -23,6 +23,9 @@ class Edge:
 
     def __hash__(self):
         return self.w ^ self.v1 ^ self.v2
+    
+    def has_one_vertex_in(self, vertices):
+        return (self.v1 in vertices and self.v2 not in vertices) or (self.v1 not in vertices and self.v2 in vertices) 
 
 class Graph:
     def __init__(self, adjacency_matrix):
@@ -55,23 +58,23 @@ class Graph:
 def run_algorithm(adjacency_matrix):
     G = Graph(adjacency_matrix)
     mst = set()
-    processedVerticies = set()
+    processedVertices = set()
     edgeQueue = queue.PriorityQueue()
 
     initialVertex = 0
-    processedVerticies.add(initialVertex)
+    processedVertices.add(initialVertex)
     adjacent_edges = G.adjacent_edges(initialVertex)
     for edge in adjacent_edges:
         edgeQueue.put(edge)
 
-    while len(processedVerticies) != len(G.get_adjacency_matrix()):
+    while len(processedVertices) != len(G.get_adjacency_matrix()):
         minEdge = edgeQueue.get()
-        mst.add((minEdge.v1, minEdge.v2))
-        vertex = minEdge.neighbor
-        processedVerticies.add(vertex)
-        adjacent_edges = G.adjacent_edges(vertex)
-        for edge in adjacent_edges:
-            if edge.neighbor not in processedVerticies:
+        if minEdge.has_one_vertex_in(processedVertices):
+            mst.add((minEdge.v1, minEdge.v2))
+            vertex = minEdge.neighbor if minEdge.neighbor not in processedVertices else minEdge.vertex 
+            processedVertices.add(vertex)
+            adjacent_edges = G.adjacent_edges(vertex)
+            for edge in adjacent_edges:
                 edgeQueue.put(edge)
 
     return mst

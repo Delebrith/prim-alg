@@ -9,13 +9,13 @@
 
 std::vector<std::vector<int>> run_algorithm(std::vector<std::vector<int>> adjacencyMatrix) 
 {
-	std::cout << "running prim's algorithm cpp implementation..." << std::endl;
+	/*std::cout << "running prim's algorithm cpp implementation..." << std::endl;
 	std::cout << "input was..." << std::endl;
 	for (int i = 0; i < adjacencyMatrix.size(); i++) {
 		for (int j = 0; j < adjacencyMatrix[i].size(); j++)
 			std::cout << adjacencyMatrix[i][j] << " ";
 		std::cout << std::endl;
-	}
+	}*/
 	
 	std::vector<std::vector<int>> mst = std::vector<std::vector<int>>();
 	std::unordered_set<int> verticesOfMst = std::unordered_set<int>();
@@ -48,22 +48,19 @@ std::vector<std::vector<int>> run_algorithm(std::vector<std::vector<int>> adjace
 			std::unordered_set<Edge, EdgeHash> adjacentEdges = graph.getAdjacentEdgesOf(vertex);
 			for (Edge e : adjacentEdges)
 			{
-				if (e.hasExactlyOneVertexIn(verticesOfMst))
-				{
-					edgeQueue.push(e);
-				}
+				edgeQueue.push(e);
 			}
 		}
 	}
 
 
-	std::cout << "finished prim's algorithm cpp implementation." << std::endl;
+	/*std::cout << "finished prim's algorithm cpp implementation." << std::endl;
 	std::cout << "returning..." << std::endl;
 	for (int i = 0; i < mst.size(); i++) {
 		for (int j = 0; j < mst[i].size(); j++)
 			std::cout << mst[i][j] << " ";
 		std::cout << std::endl;
-	}
+	}*/
 
 	return mst;
 }
