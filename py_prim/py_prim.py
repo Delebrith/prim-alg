@@ -5,16 +5,16 @@ random.seed(42)
 class Edge:
     def __init__(self, weight, vertex1, vertex2):
         """
-        Konstruktor
+        Construct a new Edge object
 
         Parameters
         ----------
         weight : int
-            Waga wierzchołka.
+            Edge weights.
         vertex1 : int
-            Index pierwszego wierzchołka.
+            Index of the first vertex.
         vertex2 : int
-            Index drugiego wierzchołka.
+            Index of the second vertex.
 
         Returns
         -------
@@ -29,17 +29,17 @@ class Edge:
 
     def __eq__(self, other):
         """
-        Sprawdzenie, czy krawędzi są sobie równe
+        Chech if edges are equal based on their weight and vertex indicies
 
         Parameters
         ----------
         other : Edge
-            Krawędź do porównania.
+            Edge to compare.
 
         Returns
         -------
         bool
-            Czy przekazany krawędzie są sobie równe.
+            True if both edges has same weight and indices
 
         """
         return self.w == other.w and \
@@ -48,17 +48,18 @@ class Edge:
 
     def __gt__(self, other):
         """
-        Porównanie krawędzi
+        Compare edges based on their weights
 
         Parameters
         ----------
         other : Edge
-            Krawędź do porównania.
+            Edge to compare.
 
         Returns
         -------
         bool
-            Czy krawedź jest większa od krawędzi przekazanej w argumencie.
+            Weight of the given edge is bigger than 
+            the weight of object.
 
         """
         return self.w > other.w
@@ -68,30 +69,30 @@ class Edge:
 
     def __hash__(self):
         """
-        Sposób obliczania funkcji mieszjącej.
+        Compute hash function.
 
         Returns
         -------
         int
-            Wynik funkcji mieszającej.
+            Hash functin result.
 
         """
         return self.w ^ self.v1 ^ self.v2
     
     def has_one_vertex_in(self, vertices):
         """
-        Sprawdzenie, czy jeden z wierzchołków jest w przekazanym zbiorze
-        wierzchołków
+        Check if given hash set of verticies contains one of the 
+        verticies of the edge
 
         Parameters
         ----------
         vertices : set
-            Zbiór indeksów wierzchołków.
+            Set of verticies.
 
         Returns
         -------
         bool
-            Wynik sprawdzenia.
+            Set has one of the edge verticies.
 
         """
         return (self.v1 in vertices and self.v2 not in vertices) or (self.v1 not in vertices and self.v2 in vertices) 
@@ -99,12 +100,12 @@ class Edge:
 class Graph:
     def __init__(self, adjacency_matrix):
         """
-        Konstruktor
+        Construct a new Graph object
 
         Parameters
         ----------
-        adjacency_matrix : kwadratowa macierz w postaci listy list
-            Macierz sąsiedzstwa grafa.
+        adjacency_matrix : 2D array
+           Adjacency matrix.
 
         Returns
         -------
@@ -122,17 +123,17 @@ class Graph:
 
     def adjacent_edges(self, vertex):
         """
-        Krawędzie incydentne z przekazanym wierzchołkiem
+        Get adjacent edges Of vertex
 
         Parameters
         ----------
         vertex : int
-            Indeks wierzchołka.
+            Vertex index.
 
         Returns
         -------
         list
-            Lista krawędzi incydentnych.
+            Resulting set of adjacent edges.
 
         """
         candidates = self.adjacency_matrix[vertex]
@@ -141,36 +142,36 @@ class Graph:
 
     def weight(self, v1, v2):
         """
-        Waga krawędzi pobrana z macierzy sąsiedztwa
+        Get edge weight
 
         Parameters
         ----------
         v1 : int
-            Indeks pierwszego wierzchołka.
+            First vertex index.
         v2 : int
-            Indeks drugiego wierzchołka.
+            Second vertex index.
 
         Returns
         -------
         int
-            Waga krawędzie.
+            Edge weight.
 
         """
         return self.adjacency_matrix[v1][v2]
 
     def neighbors(self, vertex):
         """
-        Sasiednie wierzchołki
+        Neighboring verticies
 
         Parameters
         ----------
         vertex : int
-            Indeks wierzchołka.
+            Index of the vertex.
 
         Returns
         -------
         list
-            Lista indeksów sąsiednich wierzchołków.
+            List of neighboring vertex indices.
 
         """
         candidates = self.adjacency_matrix[vertex]
@@ -185,37 +186,46 @@ class Graph:
 
 def run_algorithm(adjacency_matrix):
     """
-    Implementacja algorytmu Prima
+    Prim's algorithm implementation
 
     Parameters
     ----------
-    adjacency_matrix : Kwadratowa macierz w postaci listy list
-        Macierz sąsiedztwa grafu.
+    adjacency_matrix : 2D array
+        Adjacency matrix with edge weights
 
     Returns
     -------
     mst : set
-        Zbiór krawędzi tworzących MST.
+        Set of edges that belong to MST.
 
     """
+
+    # Initialize required objects
     G = Graph(adjacency_matrix)
     mst = set()
     processedVertices = set()
     edgeQueue = queue.PriorityQueue()
 
+    # Insert edges of the first vertex into the MST
     initialVertex = 0
     processedVertices.add(initialVertex)
     adjacent_edges = G.adjacent_edges(initialVertex)
     for edge in adjacent_edges:
         edgeQueue.put(edge)
 
+    # While there is more verticies to process
     while len(processedVertices) != len(G.get_adjacency_matrix()):
+        
+        # Get edge with the smallest weigth
         minEdge = edgeQueue.get()
+        
         if minEdge.has_one_vertex_in(processedVertices):
             mst.add((minEdge.v1, minEdge.v2))
             vertex = minEdge.neighbor if minEdge.neighbor not in processedVertices else minEdge.vertex 
             processedVertices.add(vertex)
             adjacent_edges = G.adjacent_edges(vertex)
+            
+            # Put its adjacent edges into the priority queue
             for edge in adjacent_edges:
                 edgeQueue.put(edge)
 

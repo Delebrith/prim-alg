@@ -12,17 +12,17 @@ public:
 	std::unordered_set<int> vertices;
 
 	/**
-	 * @brief Graf w postaci macierzy sąsiedztwa
+	 * @brief Construct a new Graph object
 	 * 
-	 * @param adjacencyMatrix Kwadratowa macierz sąsiedztwa grafu z wagami
+	 * @param adjacencyMatrix Adjancecny matrix
 	 */
 	Graph(const std::vector<std::vector<int>>& adjacencyMatrix);
 
 	/**
-	 * @brief Krawędzie incydentne przekazanego indeksu wierzchołka grafu
+	 * @brief Get the Adjacent Edges Of object
 	 * 
-	 * @param vertex Indeks wierzchołka
-	 * @return std::unordered_set<Edge, EdgeHash>  Zbiór incydentnych krawędzi
+	 * @param vertex Vertex index
+	 * @return std::unordered_set<Edge, EdgeHash> Resulting set of adjacent edges
 	 */
 	std::unordered_set<Edge, EdgeHash> getAdjacentEdgesOf(int vertex);
 };

@@ -2,9 +2,9 @@
 #include <vector>
 
 /**
- * @brief Uruchomienie algorytmu Prima
+ * @brief Run Prim's algorithm
  * 
- * @param adjacencyMatrix Kwadratowa macierz sąsiedztwa grafu z wagami 
- * @return std::vector<std::vector<int>> Kwadratowa macierz sąsiedztwa wynikowego drzewa MST
+ * @param adjacencyMatrix Adjacency matrix with edge weights
+ * @return std::vector<std::vector<int>> Adjacency matrix of resulting MST
  */
 std::vector<std::vector<int>> run_algorithm(std::vector<std::vector<int>> graph);

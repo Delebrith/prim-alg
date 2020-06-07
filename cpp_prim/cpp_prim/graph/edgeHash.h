@@ -5,10 +5,10 @@ class EdgeHash
 {
 public:
 	/**
-	 * @brief Obliczenie funkcji mieszającej klasy Edge na podstawie jej parametrów
+	 * @brief Compute hash function over the Edge class based its weight and verticies index
 	 * 
-	 * @param edge Krawedż do obliczenie funkcji mieszającej
-	 * @return std::size_t  Wynik funkcji mieszającej
+	 * @param edge Input edge
+	 * @return std::size_t Hash function result
 	 */
 	std::size_t operator()(const Edge& edge) const;
 };

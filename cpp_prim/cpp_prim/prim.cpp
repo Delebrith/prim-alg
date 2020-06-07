@@ -7,12 +7,6 @@
 #include <unordered_set>
 #include <queue>
 
-/**
- * @brief Uruchomienie algorytmu Prima
- * 
- * @param adjacencyMatrix Kwadratowa macierz sąsiedztwa grafu z wagami 
- * @return std::vector<std::vector<int>> Kwadratowa macierz sąsiedztwa wynikowego drzewa MST
- */
 std::vector<std::vector<int>> run_algorithm(std::vector<std::vector<int>> adjacencyMatrix) 
 {
 	std::vector<std::vector<int>> mst = std::vector<std::vector<int>>();

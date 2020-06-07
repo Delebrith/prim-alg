@@ -6,12 +6,12 @@ class EdgeWeightComparator
 {
 public:
 	/**
-	 * @brief Porównanie krawędzie według ich wag i indeksów wierzchołków
+	 * @brief Compare Edges classes based on their weights and verticies index
 	 * 
-	 * @param lhs Pierwsza krawędź do porównania
-	 * @param rhs Druga krawędź do porównania
-	 * @return true Krawędzie mają takie samie wagi i indeksy wierzchołków
-	 * @return false Krawędzie nie są sobie równe
+	 * @param lhs First edge
+	 * @param rhs Second edge
+	 * @return true Edges are same
+	 * @return false Edges are different
 	 */
 	bool operator()(Edge& lhs, Edge& rhs);
 };
