@@ -14,7 +14,7 @@ bool Edge::operator==(const Edge& rhs) const
 			|| (this->vertex1 == rhs.vertex2 && this->vertex2 == rhs.vertex1));
 }
 
-bool Edge::hasExactlyOneVertexIn(std::unordered_set<int> vertices)
+bool Edge::hasExactlyOneVertexIn(const std::unordered_set<int>& vertices)
 {
 	return (vertices.find(this->vertex1) != vertices.end() && vertices.find(this->vertex2) == vertices.end()) 
 		|| (vertices.find(this->vertex1) == vertices.end() && vertices.find(this->vertex2) != vertices.end());
