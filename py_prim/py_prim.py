@@ -29,7 +29,7 @@ class Edge:
 
     def __eq__(self, other):
         """
-        Chech if edges are equal based on their weight and vertex indicies
+        Check if edges are equal based on their weight and vertex indicies
 
         Parameters
         ----------
@@ -180,6 +180,13 @@ class Graph:
 
     def get_adjacency_matrix(self):
         """
+        Get adjacency matrix
+
+        Returns
+        -------
+        2D array
+            Adjacency matrix of the object.
+
         """
         return self.adjacency_matrix
 
