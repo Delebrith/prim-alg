@@ -30,13 +30,15 @@ std::vector<std::vector<int>> run_algorithm(std::vector<std::vector<int>> adjace
 		Edge topEdge = edgeQueue.top();
 		edgeQueue.pop();
 		
+		// check if only one vertex of edge is in MST to avoid cycles. If cycle is found, continue
 		if (topEdge.hasExactlyOneVertexIn(verticesOfMst)) {
 			mst.push_back(std::vector<int>({ topEdge.vertex1, topEdge.vertex2 }));
 
+			// choose next vertex to be added to set
 			int vertex = (verticesOfMst.find(topEdge.vertex1) == verticesOfMst.end()) ? topEdge.vertex1 : topEdge.vertex2;
 			verticesOfMst.insert(vertex);
 
-
+			// add adjacent edges to queue
 			std::unordered_set<Edge, EdgeHash> adjacentEdges = graph.getAdjacentEdgesOf(vertex);
 			for (Edge e : adjacentEdges)
 			{
