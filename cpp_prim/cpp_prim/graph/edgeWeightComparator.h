@@ -2,6 +2,7 @@
 
 #include "edge.h"
 
+// This class is used to sort edges inside priority queue
 class EdgeWeightComparator
 {
 public:
